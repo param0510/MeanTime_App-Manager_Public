@@ -1,0 +1,73 @@
+﻿@*form template link: https://bbbootstrap.com/snippets/request-demo-form-validation-12274818*@
+
+@model MeanTime.Models.Genre
+
+@{
+    ViewData["Title"] = "Edit Genre";
+}
+
+<div class="container-fluid px-1 py-5 mx-auto container">
+<div class="row d-flex justify-content-center">
+    <div class=" col-9 text-center">
+        <h1 class="headtag">Edit mode</h1>
+        <div class="card">
+            <h5 class="text-center mb-4">Genre</h5>
+            <form asp-action="Edit" enctype="multipart/form-data" class="form-card">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="GenreId" />
+                <div class="row justify-content-between text-left mb-4">
+                    <div class="form-group col-sm-6 flex-column d-flex">
+                        <label asp-for="Type" class="form-control-label px-3"></label>
+                        <input asp-for="Type" type="text" placeholder="Enter Genre Type">
+                        <span asp-validation-for="Type" class="text-danger"></span>
+
+                    </div>
+
+                    <div class="form-group col-6 flex-column d-flex">
+                        <label asp-for="Logo" class="form-control-label px-3"></label>
+                        <input asp-for="Logo" type="file" class="form-control">
+                        <span asp-validation-for="Logo" class="text-danger"></span>
+                        <!--I got this idea from the php class last sem-->
+                        @if(Model.Logo != null)
+                        {
+                            @*
+                                Try adding this image thumbnail later...
+
+                            <img src="~/img/@Model.Logo" alt="Selected Image" class="thumb" />
+                            *@
+                            <input type="hidden" id="oldImage" name="oldImage" value=@Model.Logo />
+                         }
+                    </div>
+                </div>
+                <div class="row justify-content-between text-left">
+                    <div class="form-group col-12 flex-column d-flex">
+                        <label asp-for="MetaDescription" class="form-control-label px-3"></label>
+                        <input asp-for="MetaDescription" type="text" placeholder="Meta Description">
+                        <span asp-validation-for="MetaDescription" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="row justify-content-end">
+                    
+                    @*<div class="form-group col-sm-10 d-flex flex-row ">
+                        
+                        <button class="btn-block btn-outline-danger mt-2 mr-2">
+                            <a asp-action="Index" class="text-decoration-none cancel">Cancel</a>
+                        </button>
+                        <button type="submit" value="Save" class="btn-block btn-success">Save Changes</button>
+                    </div>*@
+
+
+                    <div class="form-group col-sm-6">
+                        <button type="submit" value="Save" class="btn-block btn-primary">Add Genre</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

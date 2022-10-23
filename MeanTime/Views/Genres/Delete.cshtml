@@ -1,0 +1,45 @@
+﻿@model MeanTime.Models.Genre
+
+@{
+    ViewData["Title"] = "Delete Genre";
+}
+
+<h1>Genre Removal</h1>
+
+<h3>Are you sure you want to remove this genre?</h3>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Type)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Type)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.MetaDescription)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.MetaDescription)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Logo)
+        </dt>
+        <dd class = "col-sm-10">
+            @if (Model.Logo != null)
+            {
+                <img src="~/img/@Model.Logo" alt="App Image" class="thumb">
+            }
+            else
+            {
+                <span>None</span>
+            }
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="GenreId" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> 
+        <a asp-action="Index" class="btn btn-outline-success">Cancel</a>
+    </form>
+</div>

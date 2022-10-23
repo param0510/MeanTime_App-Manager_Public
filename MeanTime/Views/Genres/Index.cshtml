@@ -1,0 +1,62 @@
+﻿@*Card view using basic bootstrap classes*@
+
+@model IEnumerable<MeanTime.Models.Genre>
+
+@{
+    ViewData["Title"] = "Genres";
+}
+
+<h1 class="headtag">Popular Topics</h1>
+
+<p>
+    <a asp-action="Create" class="text-secondary border-1 text-decoration-none addtag">
+        @*Took this icon from Bootstrpa - https://icons.getbootstrap.com/icons/plus-circle/ *@
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
+            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+            <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+        </svg>
+        Contribute
+    </a>
+</p>
+
+<div class="container">
+
+<div class="d-flex flex-column align-items-center justify-content-center">
+
+@foreach(var item in Model)
+{
+    <div class="card  w-75 my-3 ">
+        <div class="row g-0">
+            <div class="col-md-3">
+                <a asp-controller="Apps" asp-action="Index" asp-route-genre=@item.Type>
+                    @if (item.Logo != null)
+                    {
+                        <img src="~/img/@item.Logo" alt="Genre logo" class="thumb img-fluid rounded-start" style="max-height: 300px;" />
+                    }
+                    else
+                    {
+                        <img src="~/img/placeholder.png" alt="Placeholder image" class="thumb img-fluid rounded-start" style="max-height: 300px;" />
+                    }
+                </a>
+            </div>
+            <div class="col-md-9">
+                <div class="card-body">
+                <a asp-controller="Apps" asp-action="Index" asp-route-genre=@item.Type>
+
+                    <h5 class="card-title">@Html.DisplayFor(modelItem => item.Type)</h5>
+                </a>
+
+                    <p class="card-text">
+                        @Html.DisplayFor(modelItem => item.MetaDescription)
+                    </p>
+                    <p class="card-text">
+                        <small class="text-muted">last updated recently</small>
+                    </p>
+                    <a asp-action="Edit" asp-route-id="@item.GenreId" class="btn btn-outline-info mx-2">Update</a>
+                    <a asp-action="Delete" asp-route-id="@item.GenreId" class="btn btn-outline-danger mx-2">Delete</a>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+</div>

@@ -1,0 +1,77 @@
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+}
+
+.thumb{
+    width: 150px;
+    border-radius: 10px;
+}
+.renderBody {
+    padding: 30px;
+    min-height: 82vh;
+}
+
+nav {
+    font-size: 18px;
+}
+/* Default height for small devices */
+#intro-example {
+    height: 400px;
+    /*Background image source - https://www.pexels.com/search/website%20background/*/
+    background-image: url('https://images.pexels.com/photos/747964/pexels-photo-747964.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    border-radius: 10px;
+}
+
+/* Height for devices larger than 992px */
+@media (min-width: 992px) {
+    #intro-example {
+        height: 800px;
+    }
+}
+
+.bg-image {
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.site-background {
+    background-color: #c6d7ae54;
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+
+.headtag {
+    color: #838b91 !important;
+}
+.addtag{
+    font-size: 20px;
+}
+.cancel {
+    color: inherit !important;
+}
+
+
+.mask {
+    background-color: rgba(0, 0, 0, 0.7);
+    height: 100%;
+    border-radius: 40px;
+    padding: 20px;
+}
